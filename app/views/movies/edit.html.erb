@@ -1,30 +1,28 @@
 <h1>Edit movie</h1>
 
-<% @the_movie.errors.full_messages.each do |message| %>
+<% @movie.errors.full_messages.each do |message| %>
   <p style="color: red;"><%= message %></p>
 <% end %>
 
-<%= form_with(url: movie_path(@the_movie.id), method: :patch) do %>
+<%= form_with(url: movie_path(@movie.id), method: :patch) do %>
 
   <div>
-    <%= label_tag :title_box, "Title" %>
+    <%= label_tag :title %>
 
-    <%= text_field_tag :query_title, @the_movie.title, id: "title_box" %>
+    <%= text_field_tag :title, @movie.title %>
 
   </div>
 
   <div>
-    <label for="description_box">
-      Description
-    </label>
 
-    <%= label_tag :description_box, "Description" %>
+    <%= label_tag :description %>
 
-    <%= text_field_tag :query_description, @the_movie.description, id: "description_box", rows: 3 %>
+    <%= text_area_tag :description, @movie.description, rows: 3 %>
 
     <%# WOULD "ROWS 3" BE NORMALLY IN A HASH? %>
 
   </div>
 
   <%= button_tag "Update movie" %>
-</form>
+
+<% end %>
