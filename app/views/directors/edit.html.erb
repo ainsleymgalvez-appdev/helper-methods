@@ -1,0 +1,21 @@
+<h1> Edit movie </h1>
+
+<% @director.errors.full_messages.each do |message| %>
+  <p style="color: red;"><%= message %></p>
+<% end %>
+
+<%= form_with(url: director_path(@director.id), method: :patch) do %>
+  <div>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, @director.name %>
+  </div>
+
+  <div>
+    <%= label_tag :dob %>
+    <%= date_field("directors", "dob",value: @director.dob) %>
+
+    <%# NOT SURE HOW TO MAKE VALUE APPEAR, TOOK ABOVE FROM APIDOCK %>
+  </div>
+
+  <%= button_tag "Update director" %>
+<% end %>

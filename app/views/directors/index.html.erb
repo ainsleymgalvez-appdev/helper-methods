@@ -1,0 +1,67 @@
+<h1>
+  List of all directors
+</h1>
+
+<hr>
+
+<div>
+  <%= link_to "Add a new director", new_director_path %>
+</div>
+
+<hr>
+
+<table>
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      DOB
+    </th>
+
+    <th>
+      Created_at
+    </th>
+
+    <th>
+      Updated_at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+  
+  <% @directors.each do |director| %>
+
+  <tr>
+    <td>
+      <%= director.id %>
+    </td>
+
+    <td>
+      <%= director.name %>
+    </td>
+
+    <td>
+      <%= director.dob %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(director.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(director.updated_at) %> ago
+    </td>
+
+    <td>
+      <%= link_to "Show details", director %>
+    </td>
+  </tr>
+  <% end %>
+</table>
